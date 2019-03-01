@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://zhifeiyuntian.com/"/>
-  <updated>2019-02-28T00:49:37.826Z</updated>
+  <updated>2019-03-01T00:26:29.477Z</updated>
   <id>http://zhifeiyuntian.com/</id>
   
   <author>
@@ -15,6 +15,20 @@
   </author>
   
   <generator uri="http://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>firstpaper</title>
+    <link href="http://zhifeiyuntian.com/2019/03/01/firstpaper/"/>
+    <id>http://zhifeiyuntian.com/2019/03/01/firstpaper/</id>
+    <published>2019-03-01T00:26:29.000Z</published>
+    <updated>2019-03-01T00:26:29.477Z</updated>
+    
+    <summary type="html">
+    
+    </summary>
+    
+    
+  </entry>
   
   <entry>
     <title>Hello World</title>
