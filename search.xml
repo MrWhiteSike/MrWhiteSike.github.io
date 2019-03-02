@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="utf-8"?>
+<search>
+  <entry>
+    <title><![CDATA[开篇博客]]></title>
+    <url>%2F2019%2F03%2F01%2Ffirstpaper%2F</url>
+    <content type="text"><![CDATA[开个人博客，写些东西。在成长的路上，留作纪念，岂不乐哉！ 大概花了几天时间利用HEXO框架搭建了这个博客，建好之后心情还有点小激动，毕竟经过自己的一番努力，终于实现拥有专属于自己的个人博客网站，这里参考了hexo史上最全搭建教程，感谢这篇文章的博主，写的如此清晰，才让我如此快速的搭建起个人博客网站。 俗话说：万事开头难。但是只要相信，勇于实践，锲而不舍，方能成功。只要开始，我们不可半途而废，越过山丘，我们才能看到山后的另一番景象！ 先写这么多吧，来日方长！]]></content>
+      <tags>
+        <tag>随笔</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title><![CDATA[Hello World]]></title>
+    <url>%2F2019%2F02%2F28%2Fhello-world%2F</url>
+    <content type="text"><![CDATA[Welcome to Hexo! This is your very first post. Check documentation for more info. If you get any problems when using Hexo, you can find the answer in troubleshooting or you can ask me on GitHub. Quick StartCreate a new post1$ hexo new "My New Post" More info: Writing Run server1$ hexo server More info: Server Generate static files1$ hexo generate More info: Generating Deploy to remote sites1$ hexo deploy More info: Deployment]]></content>
+  </entry>
+</search>

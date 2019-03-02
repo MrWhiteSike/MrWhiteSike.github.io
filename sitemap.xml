@@ -2,16 +2,30 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   
   <url>
-    <loc>http://zhifeiyuntian.com/about/index.html</loc>
+    <loc>http://zhifeiyuntian.com/2019/03/01/firstpaper/</loc>
     
-    <lastmod>2019-03-02T09:22:42.923Z</lastmod>
+    <lastmod>2019-03-02T13:34:15.250Z</lastmod>
     
   </url>
   
   <url>
-    <loc>http://zhifeiyuntian.com/2019/03/01/firstpaper/</loc>
+    <loc>http://zhifeiyuntian.com/archives/index.html</loc>
     
-    <lastmod>2019-03-02T08:03:37.224Z</lastmod>
+    <lastmod>2019-03-02T13:28:10.817Z</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>http://zhifeiyuntian.com/categories/index.html</loc>
+    
+    <lastmod>2019-03-02T13:25:43.973Z</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>http://zhifeiyuntian.com/about/index.html</loc>
+    
+    <lastmod>2019-03-02T09:22:42.923Z</lastmod>
     
   </url>
   
