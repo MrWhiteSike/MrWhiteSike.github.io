@@ -2,9 +2,23 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   
   <url>
+    <loc>http://zhifeiyuntian.com/categories/index.html</loc>
+    
+    <lastmod>2019-03-03T14:38:10.781Z</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>http://zhifeiyuntian.com/tags/index.html</loc>
+    
+    <lastmod>2019-03-03T14:30:39.470Z</lastmod>
+    
+  </url>
+  
+  <url>
     <loc>http://zhifeiyuntian.com/2019/03/01/firstpaper/</loc>
     
-    <lastmod>2019-03-02T18:17:21.353Z</lastmod>
+    <lastmod>2019-03-03T13:18:30.823Z</lastmod>
     
   </url>
   
@@ -16,23 +30,9 @@
   </url>
   
   <url>
-    <loc>http://zhifeiyuntian.com/categories/index.html</loc>
-    
-    <lastmod>2019-03-02T13:25:43.973Z</lastmod>
-    
-  </url>
-  
-  <url>
     <loc>http://zhifeiyuntian.com/about/index.html</loc>
     
     <lastmod>2019-03-02T09:22:42.923Z</lastmod>
-    
-  </url>
-  
-  <url>
-    <loc>http://zhifeiyuntian.com/tags/index.html</loc>
-    
-    <lastmod>2019-03-02T04:15:03.638Z</lastmod>
     
   </url>
   

@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://zhifeiyuntian.com/"/>
-  <updated>2019-03-02T18:17:21.353Z</updated>
+  <updated>2019-03-03T13:18:30.823Z</updated>
   <id>http://zhifeiyuntian.com/</id>
   
   <author>
@@ -21,7 +21,7 @@
     <link href="http://zhifeiyuntian.com/2019/03/01/firstpaper/"/>
     <id>http://zhifeiyuntian.com/2019/03/01/firstpaper/</id>
     <published>2019-03-01T00:26:29.000Z</published>
-    <updated>2019-03-02T18:17:21.353Z</updated>
+    <updated>2019-03-03T13:18:30.823Z</updated>
     
     <content type="html"><![CDATA[<p><img src="http://i2.bvimg.com/678996/40fa8640f4e68e3b.jpg" alt="Markdown"></p><center>开通个人博客，写些东西。在成长的路上，留作纪念，岂不乐哉！</center><a id="more"></a><p>大概花了几天时间利用HEXO框架搭建了这个博客，建好之后心情还有点小激动，毕竟经过自己的一番努力，终于实现拥有专属于自己的个人博客网站，这里参考了<a href="https://blog.csdn.net/sinat_37781304/article/details/82729029#t18" title="hexo史上最全搭建教程" target="_blank" rel="noopener">hexo史上最全搭建教程</a>，感谢这篇文章的博主，写的如此清晰，才让我如此快速的搭建起个人博客网站。</p><p>俗话说：万事开头难。但是只要相信，勇于实践，锲而不舍，方能成功。只要开始，我们不可半途而废，越过山丘，我们才能看到山后的另一番景象！</p><p>先写这么多吧，来日方长！</p>]]></content>
     
@@ -31,6 +31,8 @@
 &lt;center&gt;开通个人博客，写些东西。在成长的路上，留作纪念，岂不乐哉！&lt;/center&gt;
     
     </summary>
+    
+      <category term="生活" scheme="http://zhifeiyuntian.com/categories/%E7%94%9F%E6%B4%BB/"/>
     
     
       <category term="随笔" scheme="http://zhifeiyuntian.com/tags/%E9%9A%8F%E7%AC%94/"/>
