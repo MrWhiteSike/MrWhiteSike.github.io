@@ -1,6 +1,17 @@
 <?xml version="1.0" encoding="utf-8"?>
 <search>
   <entry>
+    <title><![CDATA[第一次总结]]></title>
+    <url>%2F2019%2F03%2F05%2Finterview%2F</url>
+    <content type="text"><![CDATA[前言 创建了博客好几天了，现在才来更新，看来我这拖延症又犯了啊。。。 进步 学习了一些新技能： * 熟悉了Markdown语法 * 利用阿里云解析了GitHub和coding里的Pages服务 * HEXO和主题配置 主题配置 站点配置文件_config.yml：123456789101112131415161718192021222324252627282930313233343536373839# Date / Time format## Hexo uses Moment.js to parse and display date## You can customize the date format as defined in## http://momentjs.com/docs/#/displaying/format/date_format: YYYY-MM-DDtime_format: HH:mm:ss# Pagination## Set per_page to 0 to disable paginationper_page: 10pagination_dir: page# Extensions## Plugins: https://hexo.io/plugins/# 搜索search: path: search.xml field: post format: html limit: 10000#RSS订阅plugin:- hexo-generator-feed#Feed Atomfeed: type: atom path: atom.xml limit: 20## Themes: https://hexo.io/themes/theme: next# Deployment## Docs: https://hexo.io/docs/deployment.htmldeploy: #type: git type: git repo: github: git@github.com:MrWhiteSike/MrWhiteSike.github.io.git,master coding: git@git.coding.net:MrWhiteSike/MrWhiteSike.git,master 主题配置文件/themes/next/_config.yml:参考了这篇博文，具体配置细节还请自己琢磨 结束做这个博客呢，愿景有二： * 记录生活中的点滴故事 * 分享知识，提升技能]]></content>
+      <categories>
+        <category>总结</category>
+      </categories>
+      <tags>
+        <tag>生活</tag>
+      </tags>
+  </entry>
+  <entry>
     <title><![CDATA[开篇博客]]></title>
     <url>%2F2019%2F03%2F01%2Ffirstpaper%2F</url>
     <content type="text"><![CDATA[开通个人博客，写些东西。在成长的路上，留作纪念，岂不乐哉！ 大概花了几天时间利用HEXO框架搭建了这个博客，建好之后心情还有点小激动，毕竟经过自己的一番努力，终于实现拥有专属于自己的个人博客网站，这里参考了hexo史上最全搭建教程，感谢这篇文章的博主，写的如此清晰，才让我如此快速的搭建起个人博客网站。 俗话说：万事开头难。但是只要相信，勇于实践，锲而不舍，方能成功。只要开始，我们不可半途而废，越过山丘，我们才能看到山后的另一番景象！ 先写这么多吧，来日方长！]]></content>
