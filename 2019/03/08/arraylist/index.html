@@ -1,0 +1,1427 @@
+<!DOCTYPE html>
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+
+<html class="theme-next pisces use-motion" lang="zh-CN">
+<head><meta name="generator" content="Hexo 3.8.0">
+  <meta charset="UTF-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
+<meta name="theme-color" content="#222">
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<link rel="stylesheet" href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2">
+
+<link rel="stylesheet" href="/css/main.css?v=7.0.0">
+
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png?v=7.0.0">
+
+
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png?v=7.0.0">
+
+
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png?v=7.0.0">
+
+
+  <link rel="mask-icon" href="/images/logo.svg?v=7.0.0" color="#222">
+
+
+
+
+
+
+
+<script id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Pisces',
+    version: '7.0.0',
+    sidebar: {"position":"left","display":"post","offset":12,"b2t":false,"scrollpercent":false,"onmobile":false,"dimmer":false},
+    fancybox: false,
+    fastclick: false,
+    lazyload: false,
+    tabs: true,
+    motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+  
+
+
+
+
+  <meta name="description" content="前言今天就来分析一下List中最常用的ArrayList，闲言少叙，直接进入正文。 ArrayList介绍ArrayList是一个基于动态数组实现的列表，与Java数组相比，其容量可以动态增长。12public class ArrayList&amp;lt;E&amp;gt; extends AbstractList&amp;lt;E&amp;gt;        implements List&amp;lt;E&amp;gt;, Rando">
+<meta name="keywords" content="集合">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Java基础 （二）List">
+<meta property="og:url" content="http://zhifeiyuntian.com/2019/03/08/arraylist/index.html">
+<meta property="og:site_name" content="Mr WhiteSike&#39;s Blog">
+<meta property="og:description" content="前言今天就来分析一下List中最常用的ArrayList，闲言少叙，直接进入正文。 ArrayList介绍ArrayList是一个基于动态数组实现的列表，与Java数组相比，其容量可以动态增长。12public class ArrayList&amp;lt;E&amp;gt; extends AbstractList&amp;lt;E&amp;gt;        implements List&amp;lt;E&amp;gt;, Rando">
+<meta property="og:locale" content="zh-CN">
+<meta property="og:image" content="http://img1.imgtn.bdimg.com/it/u=1956054816,4106601671&fm=26&gp=0.jpg">
+<meta property="og:updated_time" content="2019-03-10T14:18:40.020Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Java基础 （二）List">
+<meta name="twitter:description" content="前言今天就来分析一下List中最常用的ArrayList，闲言少叙，直接进入正文。 ArrayList介绍ArrayList是一个基于动态数组实现的列表，与Java数组相比，其容量可以动态增长。12public class ArrayList&amp;lt;E&amp;gt; extends AbstractList&amp;lt;E&amp;gt;        implements List&amp;lt;E&amp;gt;, Rando">
+<meta name="twitter:image" content="http://img1.imgtn.bdimg.com/it/u=1956054816,4106601671&fm=26&gp=0.jpg">
+
+
+
+  <link rel="alternate" href="/atom.xml" title="Mr WhiteSike's Blog" type="application/atom+xml">
+
+
+
+
+  <link rel="canonical" href="http://zhifeiyuntian.com/2019/03/08/arraylist/">
+
+
+
+<script id="page.configurations">
+  CONFIG.page = {
+    sidebar: "",
+  };
+</script>
+
+  <title>Java基础 （二）List | Mr WhiteSike's Blog</title>
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  <noscript>
+  <style>
+  .use-motion .motion-element,
+  .use-motion .brand,
+  .use-motion .menu-item,
+  .sidebar-inner,
+  .use-motion .post-block,
+  .use-motion .pagination,
+  .use-motion .comments,
+  .use-motion .post-header,
+  .use-motion .post-body,
+  .use-motion .collection-title { opacity: initial; }
+
+  .use-motion .logo,
+  .use-motion .site-title,
+  .use-motion .site-subtitle {
+    opacity: initial;
+    top: initial;
+  }
+
+  .use-motion .logo-line-before i { left: initial; }
+  .use-motion .logo-line-after i { right: initial; }
+  </style>
+</noscript>
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-CN">
+
+  
+  
+    
+  
+
+  <div class="container sidebar-position-left page-post-detail">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/" class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">Mr WhiteSike's Blog</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+    
+      
+        <h1 class="site-subtitle" itemprop="description">不鸣则已，一飞冲天</h1>
+      
+    
+    
+  </div>
+
+  <div class="site-nav-toggle">
+    <button aria-label="切换导航栏">
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+
+
+<nav class="site-nav">
+  
+    <ul id="menu" class="menu">
+      
+        
+        
+        
+          
+          <li class="menu-item menu-item-home">
+
+    
+    
+    
+      
+    
+
+    
+
+    <a href="/" rel="section"><i class="menu-item-icon fa fa-fw fa-home"></i> <br>首页</a>
+
+  </li>
+        
+        
+        
+          
+          <li class="menu-item menu-item-tags">
+
+    
+    
+    
+      
+    
+
+    
+
+    <a href="/tags/" rel="section"><i class="menu-item-icon fa fa-fw fa-tags"></i> <br>标签</a>
+
+  </li>
+        
+        
+        
+          
+          <li class="menu-item menu-item-categories">
+
+    
+    
+    
+      
+    
+
+    
+
+    <a href="/categories/" rel="section"><i class="menu-item-icon fa fa-fw fa-th"></i> <br>分类</a>
+
+  </li>
+        
+        
+        
+          
+          <li class="menu-item menu-item-archives">
+
+    
+    
+    
+      
+    
+
+    
+
+    <a href="/archives/" rel="section"><i class="menu-item-icon fa fa-fw fa-archive"></i> <br>归档</a>
+
+  </li>
+
+      
+      
+        <li class="menu-item menu-item-search">
+          
+            <a href="javascript:;" class="popup-trigger">
+          
+            
+              <i class="menu-item-icon fa fa-search fa-fw"></i> <br>搜索</a>
+        </li>
+      
+    </ul>
+  
+
+  
+
+  
+    <div class="site-search">
+      
+  <div class="popup search-popup local-search-popup">
+  <div class="local-search-header clearfix">
+    <span class="search-icon">
+      <i class="fa fa-search"></i>
+    </span>
+    <span class="popup-btn-close">
+      <i class="fa fa-times-circle"></i>
+    </span>
+    <div class="local-search-input-wrapper">
+      <input autocomplete="off" placeholder="搜索..." spellcheck="false" type="text" id="local-search-input">
+    </div>
+  </div>
+  <div id="local-search-result"></div>
+</div>
+
+
+
+    </div>
+  
+</nav>
+
+
+
+  
+
+
+
+</div>
+    </header>
+
+    
+
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          
+            
+
+          
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://zhifeiyuntian.com/2019/03/08/arraylist/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Mr WhiteSike">
+      <meta itemprop="description" content>
+      <meta itemprop="image" content="/images/header.jpg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Mr WhiteSike's Blog">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h2 class="post-title" itemprop="name headline">Java基础 （二）List
+
+              
+            
+          </h2>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+
+            
+            
+            
+
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+
+              
+                
+              
+
+              <time title="创建时间：2019-03-08 11:40:12" itemprop="dateCreated datePublished" datetime="2019-03-08T11:40:12+08:00">2019-03-08</time>
+            
+
+            
+          </span>
+
+          
+            <span class="post-category">
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/Java基础/" itemprop="url" rel="index"><span itemprop="name">Java基础</span></a></span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+            
+          
+
+          
+          
+
+          
+
+	  
+		  <span class="post-meta-divider">|</span>
+		  <span id="busuanzi_value_page_pv"></span>次阅读
+	  
+
+	  
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <p><img src="http://img1.imgtn.bdimg.com/it/u=1956054816,4106601671&amp;fm=26&amp;gp=0.jpg" alt></p>
+<h1 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h1><p>今天就来分析一下List中最常用的ArrayList，闲言少叙，直接进入正文。</p>
+<h1 id="ArrayList介绍"><a href="#ArrayList介绍" class="headerlink" title="ArrayList介绍"></a>ArrayList介绍</h1><p>ArrayList是一个基于动态数组实现的列表，与Java数组相比，其容量可以动态增长。<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">public class ArrayList&lt;E&gt; extends AbstractList&lt;E&gt;</span><br><span class="line">        implements List&lt;E&gt;, RandomAccess, Cloneable, java.io.Serializable</span><br></pre></td></tr></table></figure></p>
+<a id="more"></a>
+<p>从上边源码可以看到，ArrayList继承于AbstractList，实现了List，RandomAccess，Cloneable，java.io.Serializable这些接口</p>
+<pre><code>* 继承AbstractList，实现List：提供了相关的添加、删除、修改、遍历等
+* 实现RandomAccess接口：提供了快速随机访问功能，即可以通过元素下标快速获取元素对象
+* 实现Cloneable接口：重写函数clone()，提供被克隆功能
+* 实现java.io.Serializable：使ArrayList支持序列化的功能，能够通过序列化去传输。
+</code></pre><p>ArrayList中的操作非线程安全的，建议在单线程中使用，在多线程中可以使用CopyOnWriteArrayList。</p>
+<h1 id="ArrayList源码分析"><a href="#ArrayList源码分析" class="headerlink" title="ArrayList源码分析"></a>ArrayList源码分析</h1><h2 id="成员变量"><a href="#成员变量" class="headerlink" title="成员变量"></a>成员变量</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">transient Object[] elementData; // non-private to simplify nested class access</span><br><span class="line">private int size;</span><br></pre></td></tr></table></figure>
+<p>这两句源码，可以看出：<br>ArrayList包含了两个重要的对象elementData和size。</p>
+<pre><code>* Object[] elementData，它保存添加到ArrayList中的元素。是个动态数组。
+* size是ArrayList中元素的实际个数
+</code></pre><h2 id="构造函数"><a href="#构造函数" class="headerlink" title="构造函数"></a>构造函数</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br></pre></td><td class="code"><pre><span class="line">// 默认容量大小</span><br><span class="line">private static final int DEFAULT_CAPACITY = 10;</span><br><span class="line">private static final Object[] EMPTY_ELEMENTDATA = &#123;&#125;;</span><br><span class="line">private static final Object[] DEFAULTCAPACITY_EMPTY_ELEMENTDATA = &#123;&#125;;</span><br><span class="line"></span><br><span class="line">// 给定初始容量大小的构造函数</span><br><span class="line">public ArrayList(int initialCapacity) &#123;</span><br><span class="line">        if (initialCapacity &gt; 0) &#123;</span><br><span class="line">            this.elementData = new Object[initialCapacity];</span><br><span class="line">        &#125; else if (initialCapacity == 0) &#123;</span><br><span class="line">            this.elementData = EMPTY_ELEMENTDATA;</span><br><span class="line">        &#125; else &#123;</span><br><span class="line">            throw new IllegalArgumentException(&quot;Illegal Capacity: &quot;+</span><br><span class="line">                                               initialCapacity);</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">// 初始容量为10的默认构造函数</span><br><span class="line">public ArrayList() &#123;</span><br><span class="line">        this.elementData = DEFAULTCAPACITY_EMPTY_ELEMENTDATA;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">// 创建一个包含Collection的ArrayList</span><br><span class="line">public ArrayList(Collection&lt;? extends E&gt; c) &#123;</span><br><span class="line">        elementData = c.toArray();</span><br><span class="line">        if ((size = elementData.length) != 0) &#123;</span><br><span class="line">            // c.toArray might (incorrectly) not return Object[] (see 6260652)</span><br><span class="line">            if (elementData.getClass() != Object[].class)</span><br><span class="line">                elementData = Arrays.copyOf(elementData, size, Object[].class);</span><br><span class="line">        &#125; else &#123;</span><br><span class="line">            // replace with empty array.</span><br><span class="line">            this.elementData = EMPTY_ELEMENTDATA;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br></pre></td></tr></table></figure>
+<h2 id="add方法"><a href="#add方法" class="headerlink" title="add方法"></a>add方法</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br></pre></td><td class="code"><pre><span class="line">// 方式1</span><br><span class="line">public boolean add(E e) &#123;</span><br><span class="line">        ensureCapacityInternal(size + 1);  // Increments modCount!!</span><br><span class="line">        elementData[size++] = e;</span><br><span class="line">        return true;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">其中的类内部方法ensureCapacityInternal：</span><br><span class="line">private void ensureCapacityInternal(int minCapacity) &#123;</span><br><span class="line">        if (elementData == DEFAULTCAPACITY_EMPTY_ELEMENTDATA) &#123;</span><br><span class="line">            minCapacity = Math.max(DEFAULT_CAPACITY, minCapacity);</span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">        ensureExplicitCapacity(minCapacity);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    private void ensureExplicitCapacity(int minCapacity) &#123;</span><br><span class="line">        modCount++;</span><br><span class="line"></span><br><span class="line">        // overflow-conscious code</span><br><span class="line">        if (minCapacity - elementData.length &gt; 0)</span><br><span class="line">            grow(minCapacity);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    private static final int MAX_ARRAY_SIZE = Integer.MAX_VALUE - 8;</span><br><span class="line"></span><br><span class="line">    private void grow(int minCapacity) &#123;</span><br><span class="line">        // overflow-conscious code</span><br><span class="line">        int oldCapacity = elementData.length;</span><br><span class="line">        int newCapacity = oldCapacity + (oldCapacity &gt;&gt; 1);</span><br><span class="line">        if (newCapacity - minCapacity &lt; 0)</span><br><span class="line">            newCapacity = minCapacity;</span><br><span class="line">        if (newCapacity - MAX_ARRAY_SIZE &gt; 0)</span><br><span class="line">            newCapacity = hugeCapacity(minCapacity);</span><br><span class="line">        // minCapacity is usually close to size, so this is a win:</span><br><span class="line">        elementData = Arrays.copyOf(elementData, newCapacity);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    private static int hugeCapacity(int minCapacity) &#123;</span><br><span class="line">        if (minCapacity &lt; 0) // overflow</span><br><span class="line">            throw new OutOfMemoryError();</span><br><span class="line">        return (minCapacity &gt; MAX_ARRAY_SIZE) ?</span><br><span class="line">            Integer.MAX_VALUE :</span><br><span class="line">            MAX_ARRAY_SIZE;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">// 方式2</span><br><span class="line">public void add(int index, E element) &#123;</span><br><span class="line">        rangeCheckForAdd(index);</span><br><span class="line">        ensureCapacityInternal(size + 1);  // Increments modCount!!</span><br><span class="line">        System.arraycopy(elementData, index, elementData, index + 1,</span><br><span class="line">                         size - index);</span><br><span class="line">        elementData[index] = element;</span><br><span class="line">        size++;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">// 方式3</span><br><span class="line">public boolean addAll(Collection&lt;? extends E&gt; c) &#123;</span><br><span class="line">	Object[] a = c.toArray();</span><br><span class="line">	int numNew = a.length;</span><br><span class="line">	ensureCapacityInternal(size + numNew);  // Increments modCount</span><br><span class="line">	System.arraycopy(a, 0, elementData, size, numNew);</span><br><span class="line">	size += numNew;</span><br><span class="line">	return numNew != 0;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">// 方式4</span><br><span class="line">public boolean addAll(int index, Collection&lt;? extends E&gt; c) &#123;</span><br><span class="line">	rangeCheckForAdd(index);</span><br><span class="line">	Object[] a = c.toArray();</span><br><span class="line">	int numNew = a.length;</span><br><span class="line">	ensureCapacityInternal(size + numNew);  // Increments modCount</span><br><span class="line"></span><br><span class="line">	int numMoved = size - index;</span><br><span class="line">	if (numMoved &gt; 0)</span><br><span class="line">	    System.arraycopy(elementData, index, elementData, index + numNew,</span><br><span class="line">			     numMoved);</span><br><span class="line"></span><br><span class="line">	System.arraycopy(a, 0, elementData, index, numNew);</span><br><span class="line">	size += numNew;</span><br><span class="line">	return numNew != 0;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>方式1：在列表末尾插入值</p>
+<pre><code>* 首先进行扩容的校验
+* 将值插入下标为size的位置，然后size++（就是实际大小加一）
+</code></pre><p>方式2：在指定位置插入值</p>
+<pre><code>* 首先判断要插入的下标位置index是否在[0-size]之间，若不在会抛出IndexOutOfBoundsException异常
+* 接着进行扩容校验
+* 将值插入到下标为index的位置，然后size++
+</code></pre><p>方式3：在列表末尾插入Collection</p>
+<pre><code>* Collection调用toArray(),转化为Object[] 数组
+* 获取数组长度numNew
+* 根据size + numNew的值进行扩容校验
+* 将Collection转化的数组拼接到elementData的末尾
+* size += numNew
+</code></pre><p>方式4：在指定位置插入Collection</p>
+<pre><code>* 首先判断要插入的下标位置index是否在[0-size]之间，若不在会抛出IndexOutOfBoundsException异常
+* Collection调用toArray(),转化为Object[] 数组a
+* 获取数组长度numNew
+* 根据size + numNew的值进行扩容校验
+* 判断numMoved &gt; 0（numMoved = size - index），
+    为真：拷贝原数组中index后所有元素，到新数组中的index+numNew以及后面的位置
+* 拷贝数组a所有元素按之前排列顺序到数组elementData中的[index,index+numNew-1]位置
+* size += numNew
+</code></pre><h2 id="remove方法"><a href="#remove方法" class="headerlink" title="remove方法"></a>remove方法</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br><span class="line">86</span><br><span class="line">87</span><br><span class="line">88</span><br><span class="line">89</span><br><span class="line">90</span><br><span class="line">91</span><br><span class="line">92</span><br><span class="line">93</span><br><span class="line">94</span><br><span class="line">95</span><br><span class="line">96</span><br><span class="line">97</span><br><span class="line">98</span><br><span class="line">99</span><br><span class="line">100</span><br><span class="line">101</span><br><span class="line">102</span><br></pre></td><td class="code"><pre><span class="line">方式1：按索引删除元素</span><br><span class="line">public E remove(int index) &#123;</span><br><span class="line">        rangeCheck(index);</span><br><span class="line"></span><br><span class="line">        modCount++;</span><br><span class="line">        E oldValue = elementData(index);</span><br><span class="line"></span><br><span class="line">        int numMoved = size - index - 1;</span><br><span class="line">        if (numMoved &gt; 0)</span><br><span class="line">            System.arraycopy(elementData, index+1, elementData, index,</span><br><span class="line">                             numMoved);</span><br><span class="line">        elementData[--size] = null; // clear to let GC do its work</span><br><span class="line"></span><br><span class="line">        return oldValue;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">方式2：根据值删除列表中某个元素</span><br><span class="line">public boolean remove(Object o) &#123;</span><br><span class="line">        if (o == null) &#123;</span><br><span class="line">            for (int index = 0; index &lt; size; index++)</span><br><span class="line">                if (elementData[index] == null) &#123;</span><br><span class="line">                    fastRemove(index);</span><br><span class="line">                    return true;</span><br><span class="line">                &#125;</span><br><span class="line">        &#125; else &#123;</span><br><span class="line">            for (int index = 0; index &lt; size; index++)</span><br><span class="line">                if (o.equals(elementData[index])) &#123;</span><br><span class="line">                    fastRemove(index);</span><br><span class="line">                    return true;</span><br><span class="line">                &#125;</span><br><span class="line">        &#125;</span><br><span class="line">        return false;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    private void fastRemove(int index) &#123;</span><br><span class="line">        modCount++;</span><br><span class="line">        int numMoved = size - index - 1;</span><br><span class="line">        if (numMoved &gt; 0)</span><br><span class="line">            System.arraycopy(elementData, index+1, elementData, index,</span><br><span class="line">                             numMoved);</span><br><span class="line">        elementData[--size] = null; // clear to let GC do its work</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">方式3：将列表中元素全部清除</span><br><span class="line">public void clear() &#123;</span><br><span class="line">        modCount++;</span><br><span class="line"></span><br><span class="line">        // clear to let GC do its work</span><br><span class="line">        for (int i = 0; i &lt; size; i++)</span><br><span class="line">            elementData[i] = null;</span><br><span class="line"></span><br><span class="line">        size = 0;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">方式4：删除两个列表中的交集部分</span><br><span class="line">public boolean removeAll(Collection&lt;?&gt; c) &#123;</span><br><span class="line">        Objects.requireNonNull(c);</span><br><span class="line">        return batchRemove(c, false);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">方式5：按照一定规则过虑集合中的元素</span><br><span class="line">public boolean removeIf(Predicate&lt;? super E&gt; filter) &#123;</span><br><span class="line">        Objects.requireNonNull(filter);</span><br><span class="line">        // figure out which elements are to be removed</span><br><span class="line">        // any exception thrown from the filter predicate at this stage</span><br><span class="line">        // will leave the collection unmodified</span><br><span class="line">        int removeCount = 0;</span><br><span class="line">        final BitSet removeSet = new BitSet(size);</span><br><span class="line">        final int expectedModCount = modCount;</span><br><span class="line">        final int size = this.size;</span><br><span class="line">        for (int i=0; modCount == expectedModCount &amp;&amp; i &lt; size; i++) &#123;</span><br><span class="line">            @SuppressWarnings(&quot;unchecked&quot;)</span><br><span class="line">            final E element = (E) elementData[i];</span><br><span class="line">            if (filter.test(element)) &#123;</span><br><span class="line">                removeSet.set(i);</span><br><span class="line">                removeCount++;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">        if (modCount != expectedModCount) &#123;</span><br><span class="line">            throw new ConcurrentModificationException();</span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">        // shift surviving elements left over the spaces left by removed elements</span><br><span class="line">        final boolean anyToRemove = removeCount &gt; 0;</span><br><span class="line">        if (anyToRemove) &#123;</span><br><span class="line">            final int newSize = size - removeCount;</span><br><span class="line">            for (int i=0, j=0; (i &lt; size) &amp;&amp; (j &lt; newSize); i++, j++) &#123;</span><br><span class="line">                i = removeSet.nextClearBit(i);</span><br><span class="line">                elementData[j] = elementData[i];</span><br><span class="line">            &#125;</span><br><span class="line">            for (int k=newSize; k &lt; size; k++) &#123;</span><br><span class="line">                elementData[k] = null;  // Let gc do its work</span><br><span class="line">            &#125;</span><br><span class="line">            this.size = newSize;</span><br><span class="line">            if (modCount != expectedModCount) &#123;</span><br><span class="line">                throw new ConcurrentModificationException();</span><br><span class="line">            &#125;</span><br><span class="line">            modCount++;</span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">        return anyToRemove;</span><br><span class="line">    &#125;</span><br></pre></td></tr></table></figure>
+<h2 id="set方法"><a href="#set方法" class="headerlink" title="set方法"></a>set方法</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">public E set(int index, E element) &#123;</span><br><span class="line">        rangeCheck(index);</span><br><span class="line"></span><br><span class="line">        E oldValue = elementData(index);</span><br><span class="line">        elementData[index] = element;</span><br><span class="line">        return oldValue;</span><br><span class="line">    &#125;</span><br></pre></td></tr></table></figure>
+<h2 id="get方法"><a href="#get方法" class="headerlink" title="get方法"></a>get方法</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">public E get(int index) &#123;</span><br><span class="line">        rangeCheck(index);</span><br><span class="line"></span><br><span class="line">        return elementData(index);</span><br><span class="line">    &#125;</span><br></pre></td></tr></table></figure>
+<h2 id="其他方法"><a href="#其他方法" class="headerlink" title="其他方法"></a>其他方法</h2><table>
+<thead>
+<tr>
+<th>序号</th>
+<th>方法</th>
+<th>说明</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>1</td>
+<td>public Object clone()</td>
+<td>将一个list拷贝一份到新的list中</td>
+</tr>
+<tr>
+<td>2</td>
+<td>public boolean contains(Object o)</td>
+<td>判断list中是否包含某个对象实例</td>
+</tr>
+<tr>
+<td>3</td>
+<td>public void forEach(Consumer&lt;? super E&gt; action)</td>
+<td>JDK1.8新增的forEach遍历元素方法<a href="https://blog.csdn.net/zixiao217/article/details/70196751" target="_blank" rel="noopener">参考</a></td>
+</tr>
+<tr>
+<td>4</td>
+<td>public int indexOf(Object o)</td>
+<td>获取某个实例对象第一次出现的位置下标</td>
+</tr>
+<tr>
+<td>5</td>
+<td>public boolean isEmpty()</td>
+<td>判断是否为空</td>
+</tr>
+<tr>
+<td>6</td>
+<td>public Iterator<e> iterator()</e></td>
+<td>获取Iterator迭代器</td>
+</tr>
+<tr>
+<td>7</td>
+<td>public int lastIndexOf(Object o)</td>
+<td>获取某个实例对象最后一次出现的位置下标</td>
+</tr>
+<tr>
+<td>8</td>
+<td>public ListIterator<e> listIterator()</e></td>
+<td>获取ListIterator迭代器</td>
+</tr>
+<tr>
+<td>9</td>
+<td>public ListIterator<e> listIterator(int index)</e></td>
+<td>获取指针指向index的ListIterator迭代器</td>
+</tr>
+<tr>
+<td>10</td>
+<td>public void replaceAll(UnaryOperator<e> operator)</e></td>
+<td></td>
+</tr>
+<tr>
+<td>11</td>
+<td>public boolean retainAll(Collection&lt;?&gt; c)</td>
+<td>获取两个集合中交集</td>
+</tr>
+<tr>
+<td>12</td>
+<td>public int size()</td>
+<td>获取list的元素个数</td>
+</tr>
+<tr>
+<td>13</td>
+<td>public void sort(Comparator&lt;? super E&gt; c)</td>
+<td>按比较器c的方式进行排序</td>
+</tr>
+<tr>
+<td>14</td>
+<td>public Spliterator<e> spliterator()</e></td>
+<td>主要用来多线程并行迭代的迭代器Spliterator，JDK1.8新增方法<a href="https://www.cnblogs.com/nevermorewang/p/9368431.html" target="_blank" rel="noopener">参考</a></td>
+</tr>
+<tr>
+<td>15</td>
+<td>public List<e> subList(int fromIndex, int toIndex)</e></td>
+<td>截取子List</td>
+</tr>
+<tr>
+<td>16</td>
+<td>public Object[] toArray()</td>
+<td>将List转化为Object[]数组，如果将Object[]数组转换成其他类型，会抛出ClassCastException异常，因为Java不支持乡下转型。</td>
+</tr>
+<tr>
+<td>17</td>
+<td>public <t> T[] toArray(T[] a)</t></td>
+<td>传入一个数组作为参数，并通过泛型T的方式定义参数，所返回的数组类型就是调用集合的泛型，所以自己无需在转型；根据传入数组的长度，与集合的实际长度的关系：a，数组长度不小于集合长度，直接拷贝，不会产生新的数组对象；b，数组长度小于集合长度，会创建一个与集合长度相同的新数组，将集合的数据拷贝到新数组并将新数组的引用返回</td>
+</tr>
+</tbody>
+</table>
+<h1 id="ArrayList遍历方式"><a href="#ArrayList遍历方式" class="headerlink" title="ArrayList遍历方式"></a>ArrayList遍历方式</h1><p>方式1：通过迭代器遍历<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">Iterator&lt;Integer&gt; iterator = list.iterator();</span><br><span class="line">while (iterator.hasNext()) &#123;</span><br><span class="line">	iterator.next();</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
+<p>方式2：通过索引值遍历，随机访问<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">for (int i = 0; i &lt; list.size(); i++) &#123;</span><br><span class="line">	list.get(i);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
+<p>方式3：通过forEach<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">Integer value = null;</span><br><span class="line">for (Integer integer : list) &#123;</span><br><span class="line">	value = integer;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
+<p>方式4：通过forEach方法<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">list.forEach(new Consumer&lt;Integer&gt;() &#123;</span><br><span class="line">	@Override</span><br><span class="line">	public void accept(Integer t) &#123;</span><br><span class="line">		;</span><br><span class="line">	&#125;</span><br><span class="line">&#125;);</span><br></pre></td></tr></table></figure></p>
+<p>通过一个实例，来测试一下这几种方式的遍历速率：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br></pre></td><td class="code"><pre><span class="line">public class TestArrayListAccess &#123;</span><br><span class="line">	  </span><br><span class="line">	public static void main(String[] args) &#123;</span><br><span class="line">		List&lt;Integer&gt; list1 = new ArrayList&lt;&gt;();</span><br><span class="line">		for (int i = 0; i &lt; 1000000; i++) &#123;</span><br><span class="line">			list1.add(i);</span><br><span class="line">		&#125;</span><br><span class="line">		// 方式1</span><br><span class="line">		iteratorTest(list1);</span><br><span class="line">		// 方式2</span><br><span class="line">		randomAccessTest(list1);</span><br><span class="line">		// 方式3</span><br><span class="line">		forEachTest(list1);</span><br><span class="line">		// 方式4</span><br><span class="line">		forEachTest1(list1);</span><br><span class="line">		</span><br><span class="line">	&#125;</span><br><span class="line">	</span><br><span class="line">	// iterator方式</span><br><span class="line">	public static void iteratorTest(List&lt;Integer&gt; list) &#123;</span><br><span class="line">		long startTime;</span><br><span class="line">		long endTime;</span><br><span class="line">		startTime = System.currentTimeMillis();</span><br><span class="line">		Iterator&lt;Integer&gt; iterator = list.iterator();</span><br><span class="line">		while (iterator.hasNext()) &#123;</span><br><span class="line">			iterator.next();</span><br><span class="line">		&#125;</span><br><span class="line">		endTime = System.currentTimeMillis();</span><br><span class="line">		long interval = endTime - startTime;</span><br><span class="line">		System.out.println(&quot;Iterator耗时：&quot; + interval +&quot;ms&quot;);</span><br><span class="line">	&#125;</span><br><span class="line">	</span><br><span class="line">	// 随机访问方式</span><br><span class="line">	public static void randomAccessTest(List&lt;Integer&gt; list) &#123;</span><br><span class="line">		long startTime;</span><br><span class="line">		long endTime;</span><br><span class="line">		startTime = System.currentTimeMillis();</span><br><span class="line">		for (int i = 0; i &lt; list.size(); i++) &#123;</span><br><span class="line">			list.get(i);</span><br><span class="line">		&#125;</span><br><span class="line">		</span><br><span class="line">		endTime = System.currentTimeMillis();</span><br><span class="line">		long interval = endTime - startTime;</span><br><span class="line">		System.out.println(&quot;随机访问耗时：&quot;+ interval + &quot;ms&quot;);</span><br><span class="line">	&#125;</span><br><span class="line">	</span><br><span class="line">	// forEach方式</span><br><span class="line">	public static void forEachTest(List&lt;Integer&gt; list) &#123;</span><br><span class="line">		long startTime;</span><br><span class="line">		long endTime;</span><br><span class="line">		startTime  = System.currentTimeMillis();</span><br><span class="line">		for (@SuppressWarnings(&quot;unused&quot;) Integer integer : list) &#123;</span><br><span class="line">			;</span><br><span class="line">		&#125;</span><br><span class="line">		endTime = System.currentTimeMillis();</span><br><span class="line">		long interval = endTime - startTime;</span><br><span class="line">		System.out.println(&quot;forEach访问耗时：&quot;+ interval + &quot;ms&quot;);</span><br><span class="line">	&#125;</span><br><span class="line">	</span><br><span class="line">	// 调用List的forEach方法</span><br><span class="line">	public static void forEachTest1(List&lt;Integer&gt; list) &#123;</span><br><span class="line">		long startTime = System.currentTimeMillis();</span><br><span class="line">		list.forEach(new Consumer&lt;Integer&gt;() &#123;</span><br><span class="line">			@Override</span><br><span class="line">			public void accept(Integer t) &#123;</span><br><span class="line">				;</span><br><span class="line">			&#125;</span><br><span class="line">		&#125;);</span><br><span class="line">		long endTime = System.currentTimeMillis();</span><br><span class="line">		System.out.println(&quot;forEach 方法耗时：&quot; + (endTime-startTime) + &quot;ms&quot;);</span><br><span class="line">	&#125;	</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
+<p>运行结果：</p>
+<blockquote>
+<p>Iterator耗时：5ms<br>随机访问耗时：4ms<br>forEach访问耗时：7ms<br>forEach 方法耗时：7ms</p>
+</blockquote>
+<p>从上边结果可以看出，遍历ArrayList时，使用索引遍历访问的时候效率最高，而使用其他方式时，效率偏低。</p>
+<h1 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h1><p>本文介绍了ArrayList，其中包括其构造函数和方法以及它们的源码解析，最后介绍了ArrayList的遍历方式，并且通过一个实例，比较了这几种遍历方式的效率。</p>
+<h1 id="寄语"><a href="#寄语" class="headerlink" title="寄语"></a>寄语</h1><p>希望这篇文章能够给大家带来一点帮助！<br>我的口号是：我分享，我快乐，越分享，越快乐！<br>感谢各位老铁的支持。</p>
+
+      
+    </div>
+
+    
+
+    
+    
+    
+
+    
+
+    
+      
+    
+    
+      <div>
+        <div style="padding: 10px 0; margin: 20px auto; width: 90%; text-align: center;">
+  <div>给吃个🍗</div>
+  <button id="rewardButton" disable="enable" onclick="var qr = document.getElementById(&quot;QR&quot;); if (qr.style.display === 'none') {qr.style.display='block';} else {qr.style.display='none'}">
+    <span>赏</span>
+  </button>
+  <div id="QR" style="display: none;">
+
+    
+      <div id="wechat" style="display: inline-block">
+        <img id="wechat_qr" src="/images/wechatpay.jpg" alt="Mr WhiteSike 微信支付">
+        <p>微信支付</p>
+      </div>
+    
+
+    
+      <div id="alipay" style="display: inline-block">
+        <img id="alipay_qr" src="/images/alipay.jpg" alt="Mr WhiteSike 支付宝">
+        <p>支付宝</p>
+      </div>
+    
+
+    
+
+  </div>
+</div>
+
+      </div>
+    
+
+    
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/集合/" rel="tag"># 集合</a>
+          
+        </div>
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2019/03/06/string/" rel="next" title="Java基础 （一）字符串">
+                <i class="fa fa-chevron-left"></i> Java基础 （一）字符串
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+  </div>
+
+
+          </div>
+          
+
+  
+
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            站点概览
+          </li>
+        </ul>
+      
+
+      <div class="site-overview-wrap sidebar-panel">
+        <div class="site-overview">
+          <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            
+              <img class="site-author-image" itemprop="image" src="/images/header.jpg" alt="Mr WhiteSike">
+            
+              <p class="site-author-name" itemprop="name">Mr WhiteSike</p>
+              <p class="site-description motion-element" itemprop="description"></p>
+          </div>
+
+          
+            <nav class="site-state motion-element">
+              
+                <div class="site-state-item site-state-posts">
+                
+                  <a href="/archives/">
+                
+                    <span class="site-state-item-count">4</span>
+                    <span class="site-state-item-name">日志</span>
+                  </a>
+                </div>
+              
+
+              
+                
+                
+                <div class="site-state-item site-state-categories">
+                  <a href="/categories/index.html">
+                    
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                    <span class="site-state-item-count">3</span>
+                    <span class="site-state-item-name">分类</span>
+                  </a>
+                </div>
+              
+
+              
+                
+                
+                <div class="site-state-item site-state-tags">
+                  <a href="/tags/index.html">
+                    
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                    <span class="site-state-item-count">5</span>
+                    <span class="site-state-item-name">标签</span>
+                  </a>
+                </div>
+              
+            </nav>
+          
+
+          
+            <div class="feed-link motion-element">
+              <a href="/atom.xml" rel="alternate">
+                <i class="fa fa-rss"></i>
+                RSS
+              </a>
+            </div>
+          
+
+          
+            <div class="links-of-author motion-element">
+              
+                <span class="links-of-author-item">
+                  
+                  
+                    
+                  
+                  
+                    
+                  
+                  <a href="https://github.com/MrWhiteSike" title="GitHub &rarr; https://github.com/MrWhiteSike" rel="noopener" target="_blank"><i class="fa fa-fw fa-github"></i>GitHub</a>
+                </span>
+              
+            </div>
+          
+
+          
+
+          
+          
+            <div class="links-of-blogroll motion-element links-of-blogroll-block">
+              <div class="links-of-blogroll-title">
+                <i class="fa  fa-fw fa-link"></i>
+                友情链接
+              </div>
+              <ul class="links-of-blogroll-list">
+                
+                  <li class="links-of-blogroll-item">
+                    <a href="https://crossoverjie.top" title="https://crossoverjie.top" rel="noopener" target="_blank">crossoverJie's Blog</a>
+                  </li>
+                
+                  <li class="links-of-blogroll-item">
+                    <a href="http://wuchong.me" title="http://wuchong.me" rel="noopener" target="_blank">Jark's Blog</a>
+                  </li>
+                
+                  <li class="links-of-blogroll-item">
+                    <a href="http://tengj.top" title="http://tengj.top" rel="noopener" target="_blank">嘟嘟独立博客</a>
+                  </li>
+                
+                  <li class="links-of-blogroll-item">
+                    <a href="http://yemengying.com" title="http://yemengying.com" rel="noopener" target="_blank">Giraffe Home</a>
+                  </li>
+                
+                  <li class="links-of-blogroll-item">
+                    <a href="http://fangjian0423.github.io" title="http://fangjian0423.github.io" rel="noopener" target="_blank">Format's Notes</a>
+                  </li>
+                
+                  <li class="links-of-blogroll-item">
+                    <a href="http://blog.didispace.com" title="http://blog.didispace.com" rel="noopener" target="_blank">程序猿DD</a>
+                  </li>
+                
+                  <li class="links-of-blogroll-item">
+                    <a href="https://blog.52itstyle.vip" title="https://blog.52itstyle.vip" rel="noopener" target="_blank">小柒博客</a>
+                  </li>
+                
+                  <li class="links-of-blogroll-item">
+                    <a href="http://cmsblogs.com" title="http://cmsblogs.com" rel="noopener" target="_blank">Java技术驿站</a>
+                  </li>
+                
+              </ul>
+            </div>
+          
+
+          
+            
+          
+          
+
+        </div>
+      </div>
+
+      
+      <!--noindex-->
+        <div class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+            
+            
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#前言"><span class="nav-text">前言</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#ArrayList介绍"><span class="nav-text">ArrayList介绍</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#ArrayList源码分析"><span class="nav-text">ArrayList源码分析</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#成员变量"><span class="nav-text">成员变量</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#构造函数"><span class="nav-text">构造函数</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#add方法"><span class="nav-text">add方法</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#remove方法"><span class="nav-text">remove方法</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#set方法"><span class="nav-text">set方法</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#get方法"><span class="nav-text">get方法</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#其他方法"><span class="nav-text">其他方法</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#ArrayList遍历方式"><span class="nav-text">ArrayList遍历方式</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#总结"><span class="nav-text">总结</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#寄语"><span class="nav-text">寄语</span></a></li></ol></div>
+            
+
+          </div>
+        </div>
+      <!--/noindex-->
+      
+
+      
+
+    </div>
+  </aside>
+  
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright">&copy; <span itemprop="copyrightYear">2019</span>
+  <span class="with-love" id="animate">
+    <i class="fa fa-user"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">Mr WhiteSike</span>
+
+  
+
+  
+</div>
+
+
+  <div class="powered-by">由 <a href="https://hexo.io" class="theme-link" rel="noopener" target="_blank">Hexo</a> 强力驱动 v3.8.0</div>
+
+
+
+  <span class="post-meta-divider">|</span>
+
+
+
+  <div class="theme-info">主题 – <a href="https://theme-next.org" class="theme-link" rel="noopener" target="_blank">NexT.Pisces</a> v7.0.0</div>
+
+
+<div class="busuanzi-count">
+<script async src="https://busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+<span id="busuanzi_container_site_pv" style>
+    本站总访问量 <span id="busuanzi_value_site_pv"></span> 次
+    <span class="post-meta-divider">|</span>
+</span>
+<span id="busuanzi_container_site_uv" style>
+    有<span id="busuanzi_value_site_uv"></span>位童鞋看过我的博客啦
+</span>
+</div>
+
+
+
+        
+
+
+
+
+
+
+
+
+        
+      </div>
+    </footer>
+
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+      </div>
+    
+
+    
+
+    
+
+    
+  </div>
+
+  
+
+<script>
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  <script src="/lib/jquery/index.js?v=2.1.3"></script>
+
+  
+  <script src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+
+  
+  <script src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+
+
+  
+
+
+  <script src="/js/src/utils.js?v=7.0.0"></script>
+
+  <script src="/js/src/motion.js?v=7.0.0"></script>
+
+
+
+  
+  
+
+
+  <script src="/js/src/affix.js?v=7.0.0"></script>
+
+  <script src="/js/src/schemes/pisces.js?v=7.0.0"></script>
+
+
+
+  
+  <script src="/js/src/scrollspy.js?v=7.0.0"></script>
+<script src="/js/src/post-details.js?v=7.0.0"></script>
+
+
+
+  
+
+
+  <script src="/js/src/bootstrap.js?v=7.0.0"></script>
+
+
+  
+  
+
+
+  
+
+
+  
+  <script>
+    // Popup Window;
+    var isfetched = false;
+    var isXml = true;
+    // Search DB path;
+    var search_path = "search.xml";
+    if (search_path.length === 0) {
+      search_path = "search.xml";
+    } else if (/json$/i.test(search_path)) {
+      isXml = false;
+    }
+    var path = "/" + search_path;
+    // monitor main search box;
+
+    var onPopupClose = function (e) {
+      $('.popup').hide();
+      $('#local-search-input').val('');
+      $('.search-result-list').remove();
+      $('#no-result').remove();
+      $(".local-search-pop-overlay").remove();
+      $('body').css('overflow', '');
+    }
+
+    function proceedsearch() {
+      $("body")
+        .append('<div class="search-popup-overlay local-search-pop-overlay"></div>')
+        .css('overflow', 'hidden');
+      $('.search-popup-overlay').click(onPopupClose);
+      $('.popup').toggle();
+      var $localSearchInput = $('#local-search-input');
+      $localSearchInput.attr("autocapitalize", "none");
+      $localSearchInput.attr("autocorrect", "off");
+      $localSearchInput.focus();
+    }
+
+    // search function;
+    var searchFunc = function(path, search_id, content_id) {
+      'use strict';
+
+      // start loading animation
+      $("body")
+        .append('<div class="search-popup-overlay local-search-pop-overlay">' +
+          '<div id="search-loading-icon">' +
+          '<i class="fa fa-spinner fa-pulse fa-5x fa-fw"></i>' +
+          '</div>' +
+          '</div>')
+        .css('overflow', 'hidden');
+      $("#search-loading-icon").css('margin', '20% auto 0 auto').css('text-align', 'center');
+
+      
+
+      $.ajax({
+        url: path,
+        dataType: isXml ? "xml" : "json",
+        async: true,
+        success: function(res) {
+          // get the contents from search data
+          isfetched = true;
+          $('.popup').detach().appendTo('.header-inner');
+          var datas = isXml ? $("entry", res).map(function() {
+            return {
+              title: $("title", this).text(),
+              content: $("content",this).text(),
+              url: $("url" , this).text()
+            };
+          }).get() : res;
+          var input = document.getElementById(search_id);
+          var resultContent = document.getElementById(content_id);
+          var inputEventFunction = function() {
+            var searchText = input.value.trim().toLowerCase();
+            var keywords = searchText.split(/[\s\-]+/);
+            if (keywords.length > 1) {
+              keywords.push(searchText);
+            }
+            var resultItems = [];
+            if (searchText.length > 0) {
+              // perform local searching
+              datas.forEach(function(data) {
+                var isMatch = false;
+                var hitCount = 0;
+                var searchTextCount = 0;
+                var title = data.title.trim();
+                var titleInLowerCase = title.toLowerCase();
+                var content = data.content.trim().replace(/<[^>]+>/g,"");
+                
+                var contentInLowerCase = content.toLowerCase();
+                var articleUrl = decodeURIComponent(data.url).replace(/\/{2,}/g, '/');
+                var indexOfTitle = [];
+                var indexOfContent = [];
+                // only match articles with not empty titles
+                if(title != '') {
+                  keywords.forEach(function(keyword) {
+                    function getIndexByWord(word, text, caseSensitive) {
+                      var wordLen = word.length;
+                      if (wordLen === 0) {
+                        return [];
+                      }
+                      var startPosition = 0, position = [], index = [];
+                      if (!caseSensitive) {
+                        text = text.toLowerCase();
+                        word = word.toLowerCase();
+                      }
+                      while ((position = text.indexOf(word, startPosition)) > -1) {
+                        index.push({position: position, word: word});
+                        startPosition = position + wordLen;
+                      }
+                      return index;
+                    }
+
+                    indexOfTitle = indexOfTitle.concat(getIndexByWord(keyword, titleInLowerCase, false));
+                    indexOfContent = indexOfContent.concat(getIndexByWord(keyword, contentInLowerCase, false));
+                  });
+                  if (indexOfTitle.length > 0 || indexOfContent.length > 0) {
+                    isMatch = true;
+                    hitCount = indexOfTitle.length + indexOfContent.length;
+                  }
+                }
+
+                // show search results
+
+                if (isMatch) {
+                  // sort index by position of keyword
+
+                  [indexOfTitle, indexOfContent].forEach(function (index) {
+                    index.sort(function (itemLeft, itemRight) {
+                      if (itemRight.position !== itemLeft.position) {
+                        return itemRight.position - itemLeft.position;
+                      } else {
+                        return itemLeft.word.length - itemRight.word.length;
+                      }
+                    });
+                  });
+
+                  // merge hits into slices
+
+                  function mergeIntoSlice(text, start, end, index) {
+                    var item = index[index.length - 1];
+                    var position = item.position;
+                    var word = item.word;
+                    var hits = [];
+                    var searchTextCountInSlice = 0;
+                    while (position + word.length <= end && index.length != 0) {
+                      if (word === searchText) {
+                        searchTextCountInSlice++;
+                      }
+                      hits.push({position: position, length: word.length});
+                      var wordEnd = position + word.length;
+
+                      // move to next position of hit
+
+                      index.pop();
+                      while (index.length != 0) {
+                        item = index[index.length - 1];
+                        position = item.position;
+                        word = item.word;
+                        if (wordEnd > position) {
+                          index.pop();
+                        } else {
+                          break;
+                        }
+                      }
+                    }
+                    searchTextCount += searchTextCountInSlice;
+                    return {
+                      hits: hits,
+                      start: start,
+                      end: end,
+                      searchTextCount: searchTextCountInSlice
+                    };
+                  }
+
+                  var slicesOfTitle = [];
+                  if (indexOfTitle.length != 0) {
+                    slicesOfTitle.push(mergeIntoSlice(title, 0, title.length, indexOfTitle));
+                  }
+
+                  var slicesOfContent = [];
+                  while (indexOfContent.length != 0) {
+                    var item = indexOfContent[indexOfContent.length - 1];
+                    var position = item.position;
+                    var word = item.word;
+                    // cut out 100 characters
+                    var start = position - 20;
+                    var end = position + 80;
+                    if(start < 0){
+                      start = 0;
+                    }
+                    if (end < position + word.length) {
+                      end = position + word.length;
+                    }
+                    if(end > content.length){
+                      end = content.length;
+                    }
+                    slicesOfContent.push(mergeIntoSlice(content, start, end, indexOfContent));
+                  }
+
+                  // sort slices in content by search text's count and hits' count
+
+                  slicesOfContent.sort(function (sliceLeft, sliceRight) {
+                    if (sliceLeft.searchTextCount !== sliceRight.searchTextCount) {
+                      return sliceRight.searchTextCount - sliceLeft.searchTextCount;
+                    } else if (sliceLeft.hits.length !== sliceRight.hits.length) {
+                      return sliceRight.hits.length - sliceLeft.hits.length;
+                    } else {
+                      return sliceLeft.start - sliceRight.start;
+                    }
+                  });
+
+                  // select top N slices in content
+
+                  var upperBound = parseInt('1');
+                  if (upperBound >= 0) {
+                    slicesOfContent = slicesOfContent.slice(0, upperBound);
+                  }
+
+                  // highlight title and content
+
+                  function highlightKeyword(text, slice) {
+                    var result = '';
+                    var prevEnd = slice.start;
+                    slice.hits.forEach(function (hit) {
+                      result += text.substring(prevEnd, hit.position);
+                      var end = hit.position + hit.length;
+                      result += '<b class="search-keyword">' + text.substring(hit.position, end) + '</b>';
+                      prevEnd = end;
+                    });
+                    result += text.substring(prevEnd, slice.end);
+                    return result;
+                  }
+
+                  var resultItem = '';
+
+                  if (slicesOfTitle.length != 0) {
+                    resultItem += "<li><a href='" + articleUrl + "' class='search-result-title'>" + highlightKeyword(title, slicesOfTitle[0]) + "</a>";
+                  } else {
+                    resultItem += "<li><a href='" + articleUrl + "' class='search-result-title'>" + title + "</a>";
+                  }
+
+                  slicesOfContent.forEach(function (slice) {
+                    resultItem += "<a href='" + articleUrl + "'>" +
+                      "<p class=\"search-result\">" + highlightKeyword(content, slice) +
+                      "...</p>" + "</a>";
+                  });
+
+                  resultItem += "</li>";
+                  resultItems.push({
+                    item: resultItem,
+                    searchTextCount: searchTextCount,
+                    hitCount: hitCount,
+                    id: resultItems.length
+                  });
+                }
+              })
+            };
+            if (keywords.length === 1 && keywords[0] === "") {
+              resultContent.innerHTML = '<div id="no-result"><i class="fa fa-search fa-5x"></i></div>'
+            } else if (resultItems.length === 0) {
+              resultContent.innerHTML = '<div id="no-result"><i class="fa fa-frown-o fa-5x"></i></div>'
+            } else {
+              resultItems.sort(function (resultLeft, resultRight) {
+                if (resultLeft.searchTextCount !== resultRight.searchTextCount) {
+                  return resultRight.searchTextCount - resultLeft.searchTextCount;
+                } else if (resultLeft.hitCount !== resultRight.hitCount) {
+                  return resultRight.hitCount - resultLeft.hitCount;
+                } else {
+                  return resultRight.id - resultLeft.id;
+                }
+              });
+              var searchResultList = '<ul class=\"search-result-list\">';
+              resultItems.forEach(function (result) {
+                searchResultList += result.item;
+              })
+              searchResultList += "</ul>";
+              resultContent.innerHTML = searchResultList;
+            }
+          }
+
+          if ('auto' === 'auto') {
+            input.addEventListener('input', inputEventFunction);
+          } else {
+            $('.search-icon').click(inputEventFunction);
+            input.addEventListener('keypress', function (event) {
+              if (event.keyCode === 13) {
+                inputEventFunction();
+              }
+            });
+          }
+
+          // remove loading animation
+          $(".local-search-pop-overlay").remove();
+          $('body').css('overflow', '');
+
+          proceedsearch();
+        }
+      });
+    }
+
+    // handle and trigger popup window;
+    $('.popup-trigger').click(function(e) {
+      e.stopPropagation();
+      if (isfetched === false) {
+        searchFunc(path, 'local-search-input', 'local-search-result');
+      } else {
+        proceedsearch();
+      };
+    });
+
+    $('.popup-btn-close').click(onPopupClose);
+    $('.popup').click(function(e){
+      e.stopPropagation();
+    });
+    $(document).on('keyup', function (event) {
+      var shouldDismissSearchPopup = event.which === 27 &&
+        $('.search-popup').is(':visible');
+      if (shouldDismissSearchPopup) {
+        onPopupClose();
+      }
+    });
+  </script>
+
+
+
+
+
+  
+
+  
+
+  
+
+  
+
+  
+  <script>
+    (function(){
+      var bp = document.createElement('script');
+      var curProtocol = window.location.protocol.split(':')[0];
+      bp.src = (curProtocol === 'https') ? 'https://zz.bdstatic.com/linksubmit/push.js' : 'http://push.zhanzhang.baidu.com/push.js';
+      var s = document.getElementsByTagName("script")[0];
+      s.parentNode.insertBefore(bp, s);
+    })();
+  </script>
+
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+</body>
+</html>
