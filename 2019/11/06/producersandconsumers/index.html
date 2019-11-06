@@ -105,7 +105,7 @@
 <meta property="og:description" content="前言生产者消费者模式并不是GOF提出的23种设计模式之一，23种设计模式都是建立在面向对象的基础上的，但其实面向过程的编程中也有很多高效的编程模式，生产者消费者模式便是其中之一，它是我们编程过程中最常用的一种设计模式。 在实际的软件开发过程中，经常会碰到如下场景：某个模块负责产生数据，这些数据由另一个模块来负责处理（此处的模块是广义的，可以是类，函数，线程，进程等）。产生数据的模块，就形象的称为">
 <meta property="og:locale" content="zh-CN">
 <meta property="og:image" content="https://github.com/MrWhiteSike/images/blob/master/7492e49ae3f116014272e0acb6190c4b.jpg?raw=true">
-<meta property="og:updated_time" content="2019-11-06T08:59:52.883Z">
+<meta property="og:updated_time" content="2019-11-06T09:02:35.648Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="生产者&#x2F;消费者模式的理解及实现">
 <meta name="twitter:description" content="前言生产者消费者模式并不是GOF提出的23种设计模式之一，23种设计模式都是建立在面向对象的基础上的，但其实面向过程的编程中也有很多高效的编程模式，生产者消费者模式便是其中之一，它是我们编程过程中最常用的一种设计模式。 在实际的软件开发过程中，经常会碰到如下场景：某个模块负责产生数据，这些数据由另一个模块来负责处理（此处的模块是广义的，可以是类，函数，线程，进程等）。产生数据的模块，就形象的称为">
@@ -465,6 +465,7 @@
         <p><img src="https://github.com/MrWhiteSike/images/blob/master/7492e49ae3f116014272e0acb6190c4b.jpg?raw=true" alt></p>
 <h1 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h1><p>生产者消费者模式并不是GOF提出的23种设计模式之一，23种设计模式都是建立在面向对象的基础上的，但其实面向过程的编程中也有很多高效的编程模式，生产者消费者模式便是其中之一，它是我们编程过程中最常用的一种设计模式。</p>
 <p>在实际的软件开发过程中，经常会碰到如下场景：某个模块负责产生数据，这些数据由另一个模块来负责处理（此处的模块是广义的，可以是类，函数，线程，进程等）。产生数据的模块，就形象的称为生产者；处理数据的模块，就称为消费者。单就是抽象出生产者和消费者，还够不上生产者/消费者模式。该模式还需要一个缓冲区处于生产者和消费者之间，作为中介。生产者把数据放入缓冲区，而消费者从缓冲区取出数据。</p>
+<a id="more"></a>
 <h1 id="优点"><a href="#优点" class="headerlink" title="优点"></a>优点</h1><p>可能有同学会问了，这个缓冲区有什么用呢？为什么不让生产者直接调用消费者的某个函数，直接把数据传递过去？</p>
 <p>那么我们就来了解一下有哪些优点：</p>
 <ul>
