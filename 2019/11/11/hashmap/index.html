@@ -96,13 +96,21 @@
 
 
 
-  <meta property="og:type" content="website">
-<meta property="og:title" content="Mr WhiteSike&#39;s Blog">
-<meta property="og:url" content="http://zhifeiyuntian.com/tags/随笔/index.html">
+  <meta name="description" content="前言HashMap是大家工作中用的比较多的容器类，由key-value键值对组成，那么今天我们就来看看这个容器类中都有哪些API！">
+<meta name="keywords" content="Map">
+<meta property="og:type" content="article">
+<meta property="og:title" content="HashMap常用API总结">
+<meta property="og:url" content="http://zhifeiyuntian.com/2019/11/11/hashmap/index.html">
 <meta property="og:site_name" content="Mr WhiteSike&#39;s Blog">
+<meta property="og:description" content="前言HashMap是大家工作中用的比较多的容器类，由key-value键值对组成，那么今天我们就来看看这个容器类中都有哪些API！">
 <meta property="og:locale" content="zh-CN">
+<meta property="og:image" content="https://github.com/MrWhiteSike/images/blob/master/hashmap_top.jpg?raw=true">
+<meta property="og:image" content="https://github.com/MrWhiteSike/images/blob/master/hashmap_api.png?raw=true">
+<meta property="og:updated_time" content="2019-11-11T07:31:00.708Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="Mr WhiteSike&#39;s Blog">
+<meta name="twitter:title" content="HashMap常用API总结">
+<meta name="twitter:description" content="前言HashMap是大家工作中用的比较多的容器类，由key-value键值对组成，那么今天我们就来看看这个容器类中都有哪些API！">
+<meta name="twitter:image" content="https://github.com/MrWhiteSike/images/blob/master/hashmap_top.jpg?raw=true">
 
 
 
@@ -111,7 +119,7 @@
 
 
 
-  <link rel="canonical" href="http://zhifeiyuntian.com/tags/随笔/">
+  <link rel="canonical" href="http://zhifeiyuntian.com/2019/11/11/hashmap/">
 
 
 
@@ -121,7 +129,7 @@
   };
 </script>
 
-  <title>标签: 随笔 | Mr WhiteSike's Blog</title>
+  <title>HashMap常用API总结 | Mr WhiteSike's Blog</title>
   
 
 
@@ -169,7 +177,7 @@
     
   
 
-  <div class="container sidebar-position-left ">
+  <div class="container sidebar-position-left page-post-detail">
     <div class="headband"></div>
 
     <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
@@ -228,7 +236,7 @@
         
         
           
-          <li class="menu-item menu-item-tags menu-item-active">
+          <li class="menu-item menu-item-tags">
 
     
     
@@ -333,79 +341,354 @@
           
             
 
-    
-    
-      
-      
-    
-      
-      
-    
-      
-      
-    
-      
-      
-    
-    
-
-  
-
-
           
           <div id="content" class="content">
             
 
-  
-  
-  
-  <div class="post-block tag">
+  <div id="posts" class="posts-expand">
+    
 
-    <div id="posts" class="posts-collapse">
-      <div class="collection-title">
-        <h2>随笔<small>标签</small>
-        </h2>
-      </div>
+  
 
-      
-        
+  
+  
+  
+
+  
 
   <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-    <header class="post-header">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://zhifeiyuntian.com/2019/11/11/hashmap/">
 
-      <h3 class="post-title">
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Mr WhiteSike">
+      <meta itemprop="description" content>
+      <meta itemprop="image" content="/images/header.jpg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Mr WhiteSike's Blog">
+    </span>
+
+    
+      <header class="post-header">
+
         
-          <a class="post-title-link" href="/2019/03/01/firstpaper/" itemprop="url">
-            
-              <span itemprop="name">开篇博客</span>
-            
-          </a>
         
-      </h3>
+          <h2 class="post-title" itemprop="name headline">HashMap常用API总结
 
-      <div class="post-meta">
-        <time class="post-time" itemprop="dateCreated" datetime="2019-03-01T08:26:29+08:00" content="2019-03-01">
-          03-01
-        </time>
-      </div>
+              
+            
+          </h2>
+        
 
-    </header>
-  </article>
+        <div class="post-meta">
+          <span class="post-time">
 
+            
+            
+            
+
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+
+              
+                
+              
+
+              <time title="创建时间：2019-11-11 11:25:29" itemprop="dateCreated datePublished" datetime="2019-11-11T11:25:29+08:00">2019-11-11</time>
+            
+
+            
+          </span>
+
+          
+            <span class="post-category">
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/Java基础/" itemprop="url" rel="index"><span itemprop="name">Java基础</span></a></span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+            
+          
+
+          
+          
+
+          
+
+	  
+		  <span class="post-meta-divider">|</span>
+		  <span id="busuanzi_value_page_pv"></span>次阅读
+	  
+
+	  
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <p><img src="https://github.com/MrWhiteSike/images/blob/master/hashmap_top.jpg?raw=true" alt></p>
+<h1 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h1><p>HashMap是大家工作中用的比较多的容器类，由key-value键值对组成，那么今天我们就来看看这个容器类中都有哪些API！</p>
+<a id="more"></a>
+<h1 id="Java8前-HashMap里经常使用的API"><a href="#Java8前-HashMap里经常使用的API" class="headerlink" title="Java8前 HashMap里经常使用的API"></a>Java8前 HashMap里经常使用的API</h1><table>
+<thead>
+<tr>
+<th style="text-align:left">序号</th>
+<th style="text-align:left">方法</th>
+<th style="text-align:left">说明</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:left">1</td>
+<td style="text-align:left">public V put(K key, V value)</td>
+<td style="text-align:left">添加key-value类型数据</td>
+</tr>
+<tr>
+<td style="text-align:left">2</td>
+<td style="text-align:left">public void putAll(Map&lt;? extends K, ? extends V&gt; m)</td>
+<td style="text-align:left">把另一个Map容器中的所有数据添加本容器中</td>
+</tr>
+<tr>
+<td style="text-align:left">3</td>
+<td style="text-align:left">public Set&lt;Map.Entry&lt;K,V&gt;&gt; entrySet()</td>
+<td style="text-align:left">获取Map容器中所有的包含key和value的Entry对象，返回一个Set集合</td>
+</tr>
+<tr>
+<td style="text-align:left">4</td>
+<td style="text-align:left">public Set<k> keySet()</k></td>
+<td style="text-align:left">获取Map容器中所有的key，返回一个Set集合</td>
+</tr>
+<tr>
+<td style="text-align:left">5</td>
+<td style="text-align:left">public Collection<v> values()</v></td>
+<td style="text-align:left">获取Map容器中所有的value值，返回Collection集合</td>
+</tr>
+<tr>
+<td style="text-align:left">6</td>
+<td style="text-align:left">public V get(Object key)</td>
+<td style="text-align:left">根据key值，获取value值</td>
+</tr>
+<tr>
+<td style="text-align:left">7</td>
+<td style="text-align:left">public V remove(Object key)</td>
+<td style="text-align:left">根据key值，删除key-value键值对</td>
+</tr>
+<tr>
+<td style="text-align:left">8</td>
+<td style="text-align:left">public boolean remove(Object key, Object value)</td>
+<td style="text-align:left">根据key-value值，删除数据</td>
+</tr>
+<tr>
+<td style="text-align:left">9</td>
+<td style="text-align:left">public void clear()</td>
+<td style="text-align:left">清空容器中所有的数据</td>
+</tr>
+<tr>
+<td style="text-align:left">10</td>
+<td style="text-align:left">public boolean containsKey(Object key)</td>
+<td style="text-align:left">判断容器中是否包含某个key</td>
+</tr>
+<tr>
+<td style="text-align:left">11</td>
+<td style="text-align:left">public boolean containsValue(Object value)</td>
+<td style="text-align:left">判断容器中是否包含某个value值</td>
+</tr>
+<tr>
+<td style="text-align:left">12</td>
+<td style="text-align:left">public boolean isEmpty()</td>
+<td style="text-align:left">判断容器是否为null</td>
+</tr>
+<tr>
+<td style="text-align:left">13</td>
+<td style="text-align:left">public int size()</td>
+<td style="text-align:left">获取容器中的数据个数</td>
+</tr>
+</tbody>
+</table>
+<h1 id="Java8-HashMap里新增的API"><a href="#Java8-HashMap里新增的API" class="headerlink" title="Java8 HashMap里新增的API"></a>Java8 HashMap里新增的API</h1><table>
+<thead>
+<tr>
+<th>序号</th>
+<th>方法</th>
+<th>说明</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>1</td>
+<td>public V putIfAbsent(K key, V value)</td>
+<td>key不存在才put，存在就跳过</td>
+</tr>
+<tr>
+<td>2</td>
+<td>default V merge(K key, V value, BiFunction&lt;? super V, ? super V, ? extends V&gt; remappingFunction)</td>
+<td>如果key存在，则执行lambda表达式（例如，(oldval,newVal)-&gt;(Integer)oldval+(Integer)newVal），表达式入参为oldVal和newVal（就是merge方法的第二个参数值），表达式返回最终put的val。如果key不存在，则直接put newVal</td>
+</tr>
+<tr>
+<td>3</td>
+<td>public V compute(K key, BiFunction&lt;? super K, ? super V, ? extends V&gt; remappingFunction)</td>
+<td>如果key存在，则执行lambda表达式（例如，(k,oldVal)-&gt; oldVal +”1”），表达式入参为k和oldVal；如果key不存在，那么oldVal为null，那么lambda中涉及到oldVal的计算会报空指针异常。</td>
+</tr>
+<tr>
+<td>4</td>
+<td>default V computeIfAbsent(K key,Function&lt;? super K, ? extends V&gt; mappingFunction)</td>
+<td>如果key存在，直接返回当前value值；如果key不存在，执行lambda表达式（例如：k -&gt; new Integer(4)），并把表达式执行结果保存到map中。涉及到key来计算value时才有使用价值，否则可以用putIfAbsent代替</td>
+</tr>
+<tr>
+<td>5</td>
+<td>default V computeIfPresent(K key,BiFunction&lt;? super K, ? super V, ? extends V&gt; remappingFunction)</td>
+<td>如果key存在，执行lambda表达式（例如：(k,oldval) -&gt; 2），并把表达式执行结果保存到map中；如果key不存在，不会put也不会报空指针异常。</td>
+</tr>
+<tr>
+<td>6</td>
+<td>public V replace(K key, V value)</td>
+<td>如果key存在，就替换为新值并返回旧值；如果key不存在，返回null。</td>
+</tr>
+<tr>
+<td>7</td>
+<td>public boolean replace(K key, V oldValue, V newValue)</td>
+<td>如果key-oldValue存在，就替换为newValue并返回true；否则，返回false。</td>
+</tr>
+</tbody>
+</table>
+<p>HashMap类中详细的API列表如下：</p>
+<p><img src="https://github.com/MrWhiteSike/images/blob/master/hashmap_api.png?raw=true" alt="1573443719894"></p>
+<p>关于HashMap一些常用的以及新增的方法，进行了详细的说明，有些方法通过方法名就能猜出其作用，只有知道了这些方法怎么用，能够解决哪些问题，然后多用多想，才能熟练掌握这些方法！</p>
 
       
     </div>
 
+    
+
+    
+    
+    
+
+    
+
+    
+      
+    
+    
+      <div>
+        <div style="padding: 10px 0; margin: 20px auto; width: 90%; text-align: center;">
+  <div>给吃个🍗</div>
+  <button id="rewardButton" disable="enable" onclick="var qr = document.getElementById(&quot;QR&quot;); if (qr.style.display === 'none') {qr.style.display='block';} else {qr.style.display='none'}">
+    <span>赏</span>
+  </button>
+  <div id="QR" style="display: none;">
+
+    
+      <div id="wechat" style="display: inline-block">
+        <img id="wechat_qr" src="/images/wechatpay.jpg" alt="Mr WhiteSike 微信支付">
+        <p>微信支付</p>
+      </div>
+    
+
+    
+      <div id="alipay" style="display: inline-block">
+        <img id="alipay_qr" src="/images/alipay.jpg" alt="Mr WhiteSike 支付宝">
+        <p>支付宝</p>
+      </div>
+    
+
+    
+
+  </div>
+</div>
+
+      </div>
+    
+
+    
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/Map/" rel="tag"># Map</a>
+          
+        </div>
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2019/11/06/producersandconsumers/" rel="next" title="生产者/消费者模式的理解及实现">
+                <i class="fa fa-chevron-left"></i> 生产者/消费者模式的理解及实现
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
   </div>
   
   
   
+  </article>
 
-  
+
+  </div>
 
 
           </div>
           
+
+  
+
+
 
         </div>
         
@@ -425,8 +708,17 @@
       
 
       
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            站点概览
+          </li>
+        </ul>
+      
 
-      <div class="site-overview-wrap sidebar-panel sidebar-panel-active">
+      <div class="site-overview-wrap sidebar-panel">
         <div class="site-overview">
           <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
             
@@ -596,6 +888,23 @@
       </div>
 
       
+      <!--noindex-->
+        <div class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+            
+            
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#前言"><span class="nav-text">前言</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#Java8前-HashMap里经常使用的API"><span class="nav-text">Java8前 HashMap里经常使用的API</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#Java8-HashMap里新增的API"><span class="nav-text">Java8 HashMap里新增的API</span></a></li></ol></div>
+            
+
+          </div>
+        </div>
+      <!--/noindex-->
+      
 
       
 
@@ -736,6 +1045,10 @@
 
 
   
+  <script src="/js/src/scrollspy.js?v=7.0.0"></script>
+<script src="/js/src/post-details.js?v=7.0.0"></script>
+
+
 
   
 
@@ -746,6 +1059,8 @@
   
   
 
+
+  
 
 
   
