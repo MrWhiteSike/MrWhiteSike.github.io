@@ -96,18 +96,20 @@
 
 
 
-  <meta name="description" content="TCPTCP是什么TCP（Transfer Control Protocol，传输控制协议），简称TCP协议，是一种面向连接的、可靠的、基于字节流的运输层通信协议。通过TCP协议传输，得到的是一个顺序的无差错的数据流。发送方和接收方的成对的两socket之间必须建立连接，以便在TCP协议的基础上进行通信，一旦这两个socket连接起来，就可以进行双向数据传输，双方都可以进行发送或接收操作。 三次握">
+  <meta name="description" content="TCPTCP是什么TCP（Transfer Control Protocol，传输控制协议），简称TCP协议，是一种面向连接的、可靠的、基于字节流的运输层通信协议。通过TCP协议传输，得到的是一个顺序的无差错的数据流。发送方和接收方的成对的两socket之间必须建立连接，以便在TCP协议的基础上进行通信，一旦这两个socket连接起来，就可以进行双向数据传输，双方都可以进行发送或接收操作。">
 <meta name="keywords" content="Http,TCP&#x2F;IP">
 <meta property="og:type" content="article">
 <meta property="og:title" content="TCP&#x2F;IP协议，http协议等相关概念的学习">
 <meta property="og:url" content="http://zhifeiyuntian.com/2019/11/12/http/index.html">
 <meta property="og:site_name" content="Mr WhiteSike&#39;s Blog">
-<meta property="og:description" content="TCPTCP是什么TCP（Transfer Control Protocol，传输控制协议），简称TCP协议，是一种面向连接的、可靠的、基于字节流的运输层通信协议。通过TCP协议传输，得到的是一个顺序的无差错的数据流。发送方和接收方的成对的两socket之间必须建立连接，以便在TCP协议的基础上进行通信，一旦这两个socket连接起来，就可以进行双向数据传输，双方都可以进行发送或接收操作。 三次握">
+<meta property="og:description" content="TCPTCP是什么TCP（Transfer Control Protocol，传输控制协议），简称TCP协议，是一种面向连接的、可靠的、基于字节流的运输层通信协议。通过TCP协议传输，得到的是一个顺序的无差错的数据流。发送方和接收方的成对的两socket之间必须建立连接，以便在TCP协议的基础上进行通信，一旦这两个socket连接起来，就可以进行双向数据传输，双方都可以进行发送或接收操作。">
 <meta property="og:locale" content="zh-CN">
-<meta property="og:updated_time" content="2019-11-13T01:56:14.452Z">
+<meta property="og:image" content="https://github.com/MrWhiteSike/images/blob/master/tree.jpg?raw=true">
+<meta property="og:updated_time" content="2019-11-13T02:05:37.704Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="TCP&#x2F;IP协议，http协议等相关概念的学习">
-<meta name="twitter:description" content="TCPTCP是什么TCP（Transfer Control Protocol，传输控制协议），简称TCP协议，是一种面向连接的、可靠的、基于字节流的运输层通信协议。通过TCP协议传输，得到的是一个顺序的无差错的数据流。发送方和接收方的成对的两socket之间必须建立连接，以便在TCP协议的基础上进行通信，一旦这两个socket连接起来，就可以进行双向数据传输，双方都可以进行发送或接收操作。 三次握">
+<meta name="twitter:description" content="TCPTCP是什么TCP（Transfer Control Protocol，传输控制协议），简称TCP协议，是一种面向连接的、可靠的、基于字节流的运输层通信协议。通过TCP协议传输，得到的是一个顺序的无差错的数据流。发送方和接收方的成对的两socket之间必须建立连接，以便在TCP协议的基础上进行通信，一旦这两个socket连接起来，就可以进行双向数据传输，双方都可以进行发送或接收操作。">
+<meta name="twitter:image" content="https://github.com/MrWhiteSike/images/blob/master/tree.jpg?raw=true">
 
 
 
@@ -460,7 +462,9 @@
       
 
       
-        <h1 id="TCP"><a href="#TCP" class="headerlink" title="TCP"></a>TCP</h1><h2 id="TCP是什么"><a href="#TCP是什么" class="headerlink" title="TCP是什么"></a>TCP是什么</h2><p>TCP（Transfer Control Protocol，传输控制协议），简称<strong>TCP协议，是一种面向连接的、可靠的、基于字节流的运输层通信协议。</strong>通过TCP协议传输，得到的是一个顺序的无差错的数据流。发送方和接收方的成对的两socket之间必须建立连接，以便在TCP协议的基础上进行通信，一旦这两个socket连接起来，就可以进行双向数据传输，双方都可以进行发送或接收操作。</p>
+        <p><img src="https://github.com/MrWhiteSike/images/blob/master/tree.jpg?raw=true" alt></p>
+<h1 id="TCP"><a href="#TCP" class="headerlink" title="TCP"></a>TCP</h1><h2 id="TCP是什么"><a href="#TCP是什么" class="headerlink" title="TCP是什么"></a>TCP是什么</h2><p>TCP（Transfer Control Protocol，传输控制协议），简称<strong>TCP协议，是一种面向连接的、可靠的、基于字节流的运输层通信协议。</strong>通过TCP协议传输，得到的是一个顺序的无差错的数据流。发送方和接收方的成对的两socket之间必须建立连接，以便在TCP协议的基础上进行通信，一旦这两个socket连接起来，就可以进行双向数据传输，双方都可以进行发送或接收操作。</p>
+<a id="more"></a>
 <h2 id="三次握手"><a href="#三次握手" class="headerlink" title="三次握手"></a>三次握手</h2><p>TCP是面向连接的，无论哪一方向另一方发送数据之前，都必须先在双方之间建立一条连接。TCP协议提供可靠的连接服务，连接是通过三次握手进行初始化的。三次握手的目的是同步连接双方的序列号和确认并交换TCP窗口大小信息。</p>
 <p>1、第一次握手：Client端将标志位SYN置为1，随机产生一个seq=x，并将该数据包发送给Server，Client进入SYN_SENT状态，等待Server确认。</p>
 <p>2、第二次握手：Server收到数据包后由标志位SYN=1知道Client请求建立连接，Server将标志位SYN和ACK都置为1，ack（number）= x + 1，随机产生一个值seq=y，并将该数据包发送给Client以确认连接请求，Server进入SYN_RCVD状态。</p>
